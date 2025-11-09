@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    char books[3][50];        // Memory to store the book names
+    char *ptr[3];             // Array of pointers
+    int i;
+
+    // Point each pointer to each book name
+    for (i = 0; i < 3; i++) {
+        ptr[i] = books[i];
+    }
+
+    // Accept 3 book names
+    printf("Enter 3 book names:\n");
+    for (i = 0; i < 3; i++) {
+        printf("Book %d: ", i + 1);
+        fgets(ptr[i], 50, stdin);
+    }
+
+    // Print the book names
+    printf("\nYou entered:\n");
+    for (i = 0; i < 3; i++) {
+        printf("Book %d: %s", i + 1, ptr[i]);
+    }
+
+    return 0;
+}
