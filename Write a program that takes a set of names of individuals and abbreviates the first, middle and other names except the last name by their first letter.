@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char name[100];
+    char *word;
+    char last[50];
+
+    printf("Enter full name: ");
+    fgets(name, sizeof(name), stdin);
+
+    // Remove newline character
+    name[strcspn(name, "\n")] = '\0';
+
+    // Extract last word (last name)
+    char temp[100];
+    strcpy(temp, name);
+    word = strtok(temp, " ");
+    
+    // Loop to get the last word
+    while (word != NULL) {
+        strcpy(last, word);
+        word = strtok(NULL, " ");
+    }
+
+    // Now print initials for all except last name
+    word = strtok(name, " ");
+    while (word != NULL) {
+        if (strcmp(word, last) == 0) {
+            // print last name fully
+            printf("%s", word);
+        } else {
+            // print only first letter with a dot
+            printf("%c. ", word[0]);
+        }
+        word = strtok(NULL, " ");
+    }
+
+    return 0;
+}
