@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int factorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;                 // Base Case
+    return n * factorial(n - 1);  // Recursive Case
+}
+
+int main() {
+    int n;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n < 0)
+        printf("Factorial of negative numbers is not defined.\n");
+    else
+        printf("Factorial of %d = %d\n", n, factorial(n));
+
+    return 0;
+}
